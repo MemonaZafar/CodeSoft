@@ -1,0 +1,38 @@
+TASK 1: CHATBOT WITH RULE-BASED RESPONSES
+
+import random
+
+# Define a dictionary of predefined rules and multiple responses
+responses = {
+    "hello": ["Hi there!", "Hello!", "Hey! How can I assist you today?"],
+    "how are you": ["I'm good, thanks!", "I'm doing well, how about you?"],
+    "what's your name": ["I'm a chatbot.", "You can call me simple chatbot."],
+    "bye": ["Goodbye!", "See you later!", "Take care!"],
+    "tell me a joke": ["Why did the chicken cross the road? To get to the other side!", "Here's one: Knock, knock. Who's there? Boo. Boo who? Don't cry, it's just a joke!"],
+    "are you human": ["I'm a chatbot."],
+    "are you robot": ["I'm a chatbot."]
+}
+
+# Function to get a random response from the list of responses
+def get_response(user_input):
+    # Convert user input to lowercase for case-insensitive matching
+    user_input = user_input.lower()
+
+    # Iterate through the predefined rules and find a match
+    for key in responses:
+        if key in user_input:
+            return random.choice(responses[key])
+
+    # If no match is found, provide a default response
+    return "I'm sorry, I don't understand that."
+
+# Main loop to simulate a conversation
+print("Chatbot: Hi, how can I help you today?")
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == "exit":
+        print("Chatbot: Goodbye!")
+        break
+    response = get_response(user_input)
+    print("Chatbot:", response)
+
